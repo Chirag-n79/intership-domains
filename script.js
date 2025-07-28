@@ -1,17 +1,21 @@
-// Tab switching logic
-document.querySelectorAll('.nav-tabs li').forEach(tab => {
-  tab.addEventListener('click', () => {
-    // Remove active class from all
-    document.querySelectorAll('.nav-tabs li').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+let currentStep = 1;
 
-    // Add active to clicked
-    tab.classList.add('active');
-    document.getElementById(tab.dataset.tab).classList.add('active');
-  });
+function nextStep() {
+  document.getElementById(`step${currentStep}`).classList.remove("active");
+  currentStep++;
+  if (currentStep <= 5) {
+    document.getElementById(`step${currentStep}`).classList.add("active");
+  }
+
+  if (currentStep === 4) {
+    recommendInternships();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("step1").classList.add("active");
 });
 
-// Recommendation logic
 function recommendInternships() {
   const name = document.getElementById("name").value;
   const goal = document.getElementById("goal").value.toLowerCase();
@@ -41,10 +45,10 @@ function recommendInternships() {
   if (matchedDomains.length > 0) {
     resultBox.innerHTML = `
       <h3>Hello ${name || 'User'}!</h3>
-      <p>We recommend you explore the following internship domains:</p>
-      <ul>${matchedDomains.map(d => `<li>${d}</li>`).join('')}</ul>
+      <p>We recommend the following domains:</p>
+      <ul>${matchedDomains.map(d => `<li>${d}</li>`).join("")}</ul>
     `;
   } else {
-    resultBox.innerHTML = `<p>No domains matched. Try selecting more skills or updating your goal.</p>`;
+    resultBox.innerHTML = `<p>No matches found. Try selecting more skills or updating your career goal.</p>`;
   }
 }
