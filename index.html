@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Internship Recommendation Engine</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <h2>Internship Recommender</h2>
+    <ul class="nav-tabs">
+      <li data-tab="home" class="active">Home</li>
+      <li data-tab="profile">Profile</li>
+      <li data-tab="recommend">Recommend</li>
+      <li data-tab="about">About</li>
+    </ul>
+  </nav>
+
+  <div id="home" class="tab active">
+    <h1>Welcome to the Internship Recommendation Engine</h1>
+    <p>Get suggestions based on your skills and interests!</p>
+  </div>
+
+  <div id="profile" class="tab">
+    <h2>Fill Your Profile</h2>
+    <form id="profileForm">
+      <label>Name: <input type="text" id="name" required /></label><br />
+      <label>Education Level:
+        <select id="education">
+          <option value="btech">B.Tech</option>
+          <option value="mtech">M.Tech</option>
+          <option value="bsc">B.Sc</option>
+          <option value="msc">M.Sc</option>
+        </select>
+      </label><br />
+      <label>Career Goal:
+        <input type="text" id="goal" placeholder="e.g. Data Scientist" />
+      </label><br /><br />
+      <label>Select Your Skills:</label><br />
+      <div class="checkbox-group">
+        <label><input type="checkbox" value="python" /> Python</label>
+        <label><input type="checkbox" value="java" /> Java</label>
+        <label><input type="checkbox" value="html" /> HTML/CSS</label>
+        <label><input type="checkbox" value="js" /> JavaScript</label>
+        <label><input type="checkbox" value="ml" /> Machine Learning</label>
+        <label><input type="checkbox" value="ai" /> Artificial Intelligence</label>
+        <label><input type="checkbox" value="uiux" /> UI/UX Design</label>
+        <label><input type="checkbox" value="android" /> Android Dev</label>
+        <label><input type="checkbox" value="cloud" /> Cloud</label>
+        <label><input type="checkbox" value="cyber" /> Cybersecurity</label>
+      </div>
+    </form>
+  </div>
+
+  <div id="recommend" class="tab">
+    <h2>Recommended Domains</h2>
+    <button onclick="recommendInternships()">Get Recommendations</button>
+    <div id="recommendations" class="output-box"></div>
+  </div>
+
+  <div id="about" class="tab">
+    <h2>About</h2>
+    <p>This engine uses content-based filtering to recommend internship domains tailored to your profile.</p>
+    <p>Developed with ❤️ using HTML, CSS, and JavaScript.</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
